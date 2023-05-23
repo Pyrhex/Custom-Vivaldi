@@ -1,0 +1,141 @@
+/* ===== How to use custom CSS
+Open vivaldi://experiments
+Enable "Allow for using CSS modifications"
+Open Appearance section in settings
+Choose the folder you want to use
+Place your CSS files inside it
+Restart Vivaldi to see them in effect
+===== */
+
+/* =============================================================================== */
+/* Stretch tabs across window */
+/* #app #browser:is(.tabs-top, .tabs-bottom) .tab-strip {
+  display: flex;
+  margin-right: 60px;
+}
+#app #browser:is(.tabs-top, .tabs-bottom) .tab-strip > span {
+  display: block;
+  flex: 1;
+  position: relative;
+}
+#app #browser:is(.tabs-top, .tabs-bottom) .tab-strip > span:has(> .tab-position > .tab.active) {
+  min-width: 30px;
+}
+#app #browser:is(.tabs-top, .tabs-bottom) .tab-strip > span > .tab-position {
+  transform: unset;
+  width: unset;
+  position: absolute;
+  left: 0;
+  right: 0;
+}
+#app #browser:is(.tabs-top, .tabs-bottom) .tab-strip > span > .tab-position .title {
+  justify-content: center;
+  margin-right: 21px;
+}
+#app #browser:is(.tabs-top, .tabs-bottom) .tab-strip > span > .tab-position .close {
+  position: absolute;
+  right: 5px;
+}
+#app #browser:is(.tabs-top, .tabs-bottom) .tab-strip > :has(.newtab) {
+  position: absolute;
+  left: 100%;
+}
+#app #browser:is(.tabs-top, .tabs-bottom) .tab-strip > :has(.newtab) .newtab {
+  left: 0 !important;
+} */
+
+/* =============================================================================== */
+/* centered addressfield URL */
+/* .UrlField:not(.UrlField--HasEditText) .UrlBar-UrlField {text-align: center;}
+.UrlFragment-Wrapper {width: fit-content; left: 0; right: 0; margin: auto;} */
+
+/* =============================================================================== */
+/* hide https:// display */
+/* .UrlBar-AddressField > .SiteInfoButton:is(.secure, .certified) + .UrlBar-UrlFieldWrapper .UrlFragment-Wrapper > .UrlFragment--Lowlight:first-of-type {opacity:0;} */
+
+/* =============================================================================== */
+/* secure domain green highlighter  */
+/* .UrlFragment-HostFragment-Subdomain, .UrlFragment-HostFragment-Basedomain, .UrlFragment-HostFragment-TLD {-webkit-text-stroke-width: 0.6px;}
+.UrlBar-AddressField > .SiteInfoButton:is(.secure, .certified) + .UrlBar-UrlFieldWrapper :is(.UrlFragment-HostFragment-Basedomain, .UrlFragment-HostFragment-TLD) {color: var(--colorSuccessBg);} */
+
+/* =============================================================================== */
+/* warning domain pink highlighter */
+/* .UrlBar-AddressField > .SiteInfoButton.warning + .UrlBar-UrlFieldWrapper :is(.UrlFragment-HostFragment-Basedomain, .UrlFragment-HostFragment-TLD) {color: deeppink;} */
+
+/* =============================================================================== */
+/* Hide side panel */
+#panels-container.overlay, #panels-container.icons {width:0 !important;}
+#panels {overflow:visible; padding:0 !important;}
+:not(.resizing)#panels-container.overlay .panel-group {transition: width .1s linear !important;}
+#panels-container.right.overlay > .SlideBar--FullHeight.alternate {margin-left:-35px;}
+#panels-container.overlay #switch, #panels-container:not(.overlay).icons #switch {background-color: var(--colorBgAlphaBlur);}
+#panels-container #switch {height: 100%; flex-basis:35px; visibility:visible !important; z-index:3;}
+#panels-container.icons:not(:hover) #switch, #panels-container.switcher:not(:hover) #switch {height:50px; flex-basis: 4px; opacity:0; margin: 0 2.5px; transition: .1s .9s, background-color 0s 0s, opacity 0s 1s !important;}
+
+/* =============================================================================== */
+/* Highlight active tab by dimming all other inactive tabs */
+/* https://forum.vivaldi.net/topic/51239/highlight-active-tab */
+#browser .tab-position .tab:not(.active) .title {
+  opacity: 0.5 !important;
+}
+
+/* =============================================================================== */
+/* hide favicon */
+.tab .favicon {
+  display: none !important;
+}
+
+/* =============================================================================== */
+/* Color ONLY the TAB, not the toolbars as well! */
+#browser .tab-position .tab.active {background-color: rgb(106, 253, 0);}
+/* rounded tabs */
+#header {
+  padding-top: 0px;
+  padding-bottom: 5px;
+}
+
+#tabs-container .tab:not(.tab-group) {
+  border-radius: var(--radiusHalf);
+  margin-left: 4px;
+  margin-right: 4px;
+}
+
+.tabs-top .tab.active:not(.marked):not(.tab-mini):not(.tab-in-accordion):after,
+.tabs-top .tab.active:not(.marked):not(.tab-mini):not(.tab-in-accordion):before {
+  bottom: 0;
+  -webkit-mask-image: radial-gradient(circle at 0 0, transparent, transparent 73%);
+}
+
+#panels-container {
+  
+}
+
+.vivaldi {
+  top: 5px;
+}
+
+#header #titlebar .window-buttongroup {
+  padding-top: 5px;
+  padding-bottom: 5px;
+  padding-right: 1px;;
+}
+
+.toolbar-tabbar.sync-and-trash-container {
+  margin-right: 8px;
+}
+
+.speeddial .dial {
+  border-radius: var(--radius);
+  backdrop-filter: var(--backgroundBlur);
+}
+
+.NotesManager {
+  backdrop-filter: var(--backgroundBlur);
+}
+
+.NotesManager-Note {
+  background-color: var(--colorBgAlpha);
+  backdrop-filter: var(--backgroundBlur);
+}
+
+/* EXPERIMENTAL */
